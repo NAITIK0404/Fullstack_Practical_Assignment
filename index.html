@@ -1,0 +1,22 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Cricket Scores</title>
+  </head>
+  <body>
+    <h1>Welcome to Live Cricket Scores</h1>
+    <div id="scores"></div>
+    <script>
+      fetch("/live-scores")
+        .then((response) => response.json())
+        .then((data) => {
+          const scoresDiv = document.getElementById("scores");
+          scoresDiv.innerHTML = JSON.stringify(data, null, 2);
+        })
+        .catch((error) => console.error("Error fetching scores:", error));
+    </script>
+  </body>
+</html>
